@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GO.Modelos", "GO.Modelos\GO.Modelos.csproj", "{2DF798AE-5A4C-479A-98BE-A08CE620883B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos", "Go.Juegos\Go.Juegos.csproj", "{5286A0B2-E760-482C-8E6F-E148A8671255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +9,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2DF798AE-5A4C-479A-98BE-A08CE620883B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DF798AE-5A4C-479A-98BE-A08CE620883B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DF798AE-5A4C-479A-98BE-A08CE620883B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DF798AE-5A4C-479A-98BE-A08CE620883B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5286A0B2-E760-482C-8E6F-E148A8671255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5286A0B2-E760-482C-8E6F-E148A8671255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5286A0B2-E760-482C-8E6F-E148A8671255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5286A0B2-E760-482C-8E6F-E148A8671255}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
