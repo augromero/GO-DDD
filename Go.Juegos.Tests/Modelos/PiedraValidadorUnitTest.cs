@@ -22,6 +22,7 @@ namespace Go.Juegos.Tests.Modelos
             string puntoId = "9X1Y1";
             List<string> puntosOcupados = new List<string> { "9X1Y1", "9X2Y1" };
 
+
             PiedraValidador.LanzaExcepcionSiPuntoEstaOcupado(puntoId, puntosOcupados);
         }
 

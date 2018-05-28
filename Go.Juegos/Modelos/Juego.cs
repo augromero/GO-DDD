@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Go.Juegos.Modelos.Enumerables;
 
 namespace Go.Juegos.Modelos
@@ -13,6 +14,9 @@ namespace Go.Juegos.Modelos
             Tablero = tablero;
             ColorActivo = Color.Negro;
             TurnoActivo = 1;
+            Piedras = new List<Piedra>();
+            Movimientos = new List<Movimiento>();
+
         }
 
         private Juego()
@@ -24,6 +28,39 @@ namespace Go.Juegos.Modelos
         public Color ColorActivo { get; private set; }
         public int TurnoActivo { get; private set; }
 
-        public IEnumerable<Piedra> Piedras { get; private set; }
+        public ICollection<Piedra> Piedras { get; private set; }
+        public ICollection<Movimiento> Movimientos { get; private set; }
+
+        public void PonerPiedra(string puntoId)
+        {
+            PiedraValidador.LanzaExcepcionSiPuntoEsInexistente(puntoId, Tablero);
+            PiedraValidador.LanzaExcepcionSiPuntoEstaOcupado(puntoId, ObtenerPuntosOcupados());
+
+            Piedras.Add(new Piedra(Guid, ColorActivo, puntoId));
+            Movimientos.Add(new Movimiento(Guid, ColorActivo, puntoId, TurnoActivo));
+
+            CambioDeTurno();
+
+        }
+
+        private void CambioDeTurno()
+        {
+            TurnoActivo++;
+            ColorActivo = CambiarColor();
+        }
+
+        public List<string> ObtenerPuntosOcupados()
+        {
+            
+            return Piedras.Select(piedra => piedra.PuntoId).ToList();
+        }
+
+        private Color CambiarColor()
+        {
+            if (ColorActivo == Color.Negro)
+                return Color.Blanco;
+            else
+                return Color.Negro;
+        }
     }
 }
