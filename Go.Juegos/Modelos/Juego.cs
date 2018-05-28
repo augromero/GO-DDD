@@ -6,6 +6,15 @@ namespace Go.Juegos.Modelos
 {
     public class Juego
     {
+        
+        public Juego(Tablero tablero)
+        {
+            Guid = new Guid(); 
+            Tablero = tablero;
+            ColorActivo = Color.Negro;
+            TurnoActivo = 1;
+        }
+
         private Juego()
         {
         }

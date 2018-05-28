@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos", "Go.Juegos\Go.Juegos.csproj", "{5286A0B2-E760-482C-8E6F-E148A8671255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos.Tests", "Go.Juegos.Tests\Go.Juegos.Tests.csproj", "{B9D0C842-BECB-4924-AE8C-A1E1C648D206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{5286A0B2-E760-482C-8E6F-E148A8671255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5286A0B2-E760-482C-8E6F-E148A8671255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5286A0B2-E760-482C-8E6F-E148A8671255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D0C842-BECB-4924-AE8C-A1E1C648D206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D0C842-BECB-4924-AE8C-A1E1C648D206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D0C842-BECB-4924-AE8C-A1E1C648D206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D0C842-BECB-4924-AE8C-A1E1C648D206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

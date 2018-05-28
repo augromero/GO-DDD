@@ -3,19 +3,19 @@ using Go.Juegos.Modelos.Enumerables;
 
 namespace Go.Juegos.Modelos
 {
-    public class Piedra
+    public class Movimiento
     {
-        
-
-        public Piedra(Guid juegoGuid, Color color, string puntoId)
+        public Movimiento(Guid juegoGuid, Color color, string puntoId, int turno)
         {
             Guid = new Guid();
             JuegoGuid = juegoGuid;
             Color = color;
             PuntoId = puntoId;
+            Turno = turno;
+            FechaRegistro = DateTime.Now;
         }
 
-        private Piedra()
+        private Movimiento()
         {
         }
 
@@ -23,5 +23,7 @@ namespace Go.Juegos.Modelos
         public Guid JuegoGuid { get; private set; }
         public Color Color { get; private set; }
         public string PuntoId { get; private set; }
+        public int Turno { get; private set; }
+        public DateTime FechaRegistro { get; private set; }
     }
 }
