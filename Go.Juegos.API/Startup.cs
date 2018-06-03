@@ -32,11 +32,20 @@ namespace Go.Juegos.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            });
+
             services.AddDbContext<JuegoContexto>(opciones =>
                                                  opciones.UseSqlite(Configuration.GetConnectionString("sqlLite")));
 
             services.AddScoped<IJuegoRepo, JuegoRepo>();
+            services.AddScoped<IPuntoRepo, PuntoRepo>();
+
             services.AddScoped<IJuegoIniciador, JuegoIniciador>();
+            services.AddScoped<IPartida, Partida>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

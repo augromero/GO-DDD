@@ -91,16 +91,5 @@ namespace Go.Juegos.Tests.Modelos
             Assert.AreEqual(9, puntosTablero9x9.Max(punto => punto.Y));
         }
 
-        [TestMethod]
-        public void ExistePuntoTablero_cuantoExiste_retornaTrue()
-        {
-            Assert.IsTrue(PuntosTablero.ExistePuntoIdEnTablero("9X1Y1", Tablero.nueveXnueve));
-        }
-
-        [TestMethod]
-        public void ExistePuntoTablero_cuantoNoExiste_retornaFalse()
-        {
-            Assert.IsFalse(PuntosTablero.ExistePuntoIdEnTablero("13X1Y1", Tablero.nueveXnueve));
-        }
     }
 }

@@ -6,11 +6,13 @@
 
   <ItemGroup>
     <Folder Include="Repositorios\" />
+    <Folder Include="Dominio\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Go.Juegos\Go.Juegos.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />
+    <Compile Remove="Dominio\IPuntosTablero.cs" />
   </ItemGroup>
 </Project>

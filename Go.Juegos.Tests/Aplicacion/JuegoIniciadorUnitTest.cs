@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Fenix.Excepciones;
 using Go.Aplicacion;
 using Go.Interfaces.Repositorios;
 using Go.Juegos.Modelos;
+using Go.Juegos.Modelos.Enumerables;
+using Go.Juegos.Modelos.Puntos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -12,6 +15,7 @@ namespace Go.Juegos.Tests.Aplicacion
     public class JuegoIniciadorUnitTest
     {
         private Mock<IJuegoRepo> _juegoRepo;
+        private Mock<IPuntoRepo> _puntoRepo;
 
         private JuegoIniciador _juegoIniciador;
 
@@ -19,8 +23,9 @@ namespace Go.Juegos.Tests.Aplicacion
         public void Inicializar()
         {
             _juegoRepo = new Mock<IJuegoRepo>();
+            _puntoRepo = new Mock<IPuntoRepo>();
 
-            _juegoIniciador = new JuegoIniciador(_juegoRepo.Object);
+            _juegoIniciador = new JuegoIniciador(_juegoRepo.Object, _puntoRepo.Object);
 
         }
 
@@ -47,6 +52,32 @@ namespace Go.Juegos.Tests.Aplicacion
                       .Returns(juegoGuidEsperado);
 
             Juego juego = _juegoIniciador.IniciarJuego(tamañoTablero);
+        }
+
+        [TestMethod]
+        public void PrepararPartida_CuandoPuntosTableroNoExisten_AdicionaPuntos()
+        {
+            Tablero tablero = Tablero.nueveXnueve;
+
+            _puntoRepo.Setup(metodo => metodo.ExisteTableroCreado(tablero))
+                      .Returns(false);
+
+            _juegoIniciador.PrepararPartida(tablero);
+
+            _puntoRepo.Verify(metodo => metodo.AgregarPuntos(It.IsNotNull<List<Punto>>()), Times.Once());
+        }
+
+        [TestMethod]
+        public void PrepararPartida_CuandoPuntosTableroExisten_NoEjecutaAcciones()
+        {
+            Tablero tablero = Tablero.nueveXnueve;
+
+            _puntoRepo.Setup(metodo => metodo.ExisteTableroCreado(tablero))
+                      .Returns(true);
+
+            _juegoIniciador.PrepararPartida(tablero);
+
+            _puntoRepo.Verify(metodo => metodo.AgregarPuntos(It.IsAny<List<Punto>>()), Times.Never());
         }
     }
 }

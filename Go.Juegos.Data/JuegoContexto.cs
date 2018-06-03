@@ -1,6 +1,7 @@
 ﻿using System;
 using Go.Juegos.Modelos;
 using Go.Juegos.Modelos.Enumerables;
+using Go.Juegos.Modelos.Puntos;
 using Microsoft.EntityFrameworkCore;
 
 namespace Go.Juegos.Data
@@ -15,6 +16,7 @@ namespace Go.Juegos.Data
         public DbSet<Juego> Juegos { get; set; }
         public DbSet<Piedra> Piedras { get; set; }
         public DbSet<Movimiento> Movimientos { get; set; }
+        public DbSet<Punto> Puntos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,9 +41,25 @@ namespace Go.Juegos.Data
                         .ToTable("Piedras")
                         .HasKey(propiedad => propiedad.Guid);
 
+            modelBuilder.Entity<Piedra>()
+                        .Property(propiedad => propiedad.Color)
+                        .HasConversion(
+                            color => color.ToString(),
+                            color => (Color)Enum.Parse(typeof(Color), color));
+
             modelBuilder.Entity<Movimiento>()
                         .ToTable("Movimientos")
                         .HasKey(propiedad => propiedad.Guid);
+            
+            modelBuilder.Entity<Movimiento>()
+                        .Property(propiedad => propiedad.Color)
+                        .HasConversion(
+                            color => color.ToString(),
+                            color => (Color)Enum.Parse(typeof(Color), color));
+
+            modelBuilder.Entity<Punto>()
+                        .HasKey(propiedad => propiedad.Id);
+
         }
     }
 }

@@ -33,7 +33,6 @@ namespace Go.Juegos.Modelos
 
         public void PonerPiedra(string puntoId)
         {
-            PiedraValidador.LanzaExcepcionSiPuntoEsInexistente(puntoId, Tablero);
             PiedraValidador.LanzaExcepcionSiPuntoEstaOcupado(puntoId, ObtenerPuntosOcupados());
 
             Piedras.Add(new Piedra(Guid, ColorActivo, puntoId));

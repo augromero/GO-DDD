@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Fenix.Excepciones;
 using Go.Juegos.Modelos;
 using Go.Juegos.Modelos.Enumerables;
 using Go.Juegos.Modelos.Puntos;
@@ -16,7 +17,7 @@ namespace Go.Juegos.Tests.Modelos
         }
 
         [TestMethod]
-        [ExpectedException(typeof(PuntoOcupadoException), "El punto está ocupado.")]
+        [ExpectedException(typeof(FenixExceptionConflict), "El punto está ocupado.")]
         public void PuntoOcupado_cuandoNoEstaDisponible_LanzaExcepcion()
         {
             string puntoId = "9X1Y1";
@@ -26,14 +27,6 @@ namespace Go.Juegos.Tests.Modelos
             PiedraValidador.LanzaExcepcionSiPuntoEstaOcupado(puntoId, puntosOcupados);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(PuntoInexistenteException), "El punto no está en el tablero")]
-        public void PuntoInexistente_cuandoNoExiste_LanzaExcepcion()
-        {
-            string puntoId = "13X1Y1";
-            Tablero tablero = Tablero.nueveXnueve;
-
-            PiedraValidador.LanzaExcepcionSiPuntoEsInexistente(puntoId, tablero);
-        }
+       
     }
 }

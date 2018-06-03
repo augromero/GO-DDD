@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Go.Interfaces.Repositorios;
 using Go.Juegos.Modelos;
+using Microsoft.EntityFrameworkCore;
 
 namespace Go.Juegos.Data
 {
@@ -23,7 +25,10 @@ namespace Go.Juegos.Data
 
         public Juego ObtenerJuego(Guid juegoGuid)
         {
-            return _contexto.Find<Juego>(juegoGuid);
+            return  _contexto.Juegos
+                     .Include(juego => juego.Piedras)
+                     .Include(juego => juego.Movimientos)
+                     .FirstOrDefault(juego => juego.Guid == juegoGuid);
         }
 
         public void GuardarCambios()

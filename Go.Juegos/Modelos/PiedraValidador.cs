@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using Go.Juegos.Modelos.Enumerables;
-using Go.Juegos.Modelos.Puntos;
+﻿using System.Collections.Generic;
+using Fenix.Excepciones;
 
 namespace Go.Juegos.Modelos
 {
     public static class PiedraValidador
-    {       
+    {
 
         public static void LanzaExcepcionSiPuntoEstaOcupado(string puntoId, List<string> puntosOcupados)
         {
             if (puntosOcupados.Contains(puntoId))
-                throw new PuntoOcupadoException("Ocupado.");
+                throw new FenixExceptionConflict("Ya existe una piedra en ese punto");
         }
 
-        public static void LanzaExcepcionSiPuntoEsInexistente(string puntoId, Tablero tablero)
-        {
-            if (PuntosTablero.ExistePuntoIdEnTablero(puntoId, tablero) is false)
-                throw new PuntoInexistenteException("Punto inexistente.");
-        }
+
     }
 }

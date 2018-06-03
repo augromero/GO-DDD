@@ -9,4 +9,10 @@
     <Folder Include="Modelos\Enumerables\" />
     <Folder Include="Modelos\Puntos\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Modelos\Puntos\PuntoInexistenteException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fenix.Excepciones" Version="2.1.0" />
+  </ItemGroup>
 </Project>

@@ -22,8 +22,6 @@ namespace Go.Juegos.API.Controllers
             _juegoIniciador = juegoIniciador;
         }
 
-
-        // POST api/values
         [HttpPost]
         public Juego Post([FromBody]int tamañoTablero)
         {
@@ -33,16 +31,6 @@ namespace Go.Juegos.API.Controllers
             return juego;
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

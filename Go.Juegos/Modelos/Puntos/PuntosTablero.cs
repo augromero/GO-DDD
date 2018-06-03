@@ -21,11 +21,6 @@ namespace Go.Juegos.Modelos.Puntos
             return puntosTablero;
         }
 
-        public static bool ExistePuntoIdEnTablero(string puntoId, Tablero tablero)
-        {
-            List<string> puntosIdPorTablero = CrearPuntosTablero(tablero).Select(punto => punto.Id).ToList();
-
-            return puntosIdPorTablero.Contains(puntoId);
-        }
+       
     }
 }
