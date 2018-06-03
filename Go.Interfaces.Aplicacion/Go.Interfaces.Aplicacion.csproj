@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Modelos\" />
-    <Folder Include="Modelos\Enumerables\" />
-    <Folder Include="Modelos\Puntos\" />
+    <ProjectReference Include="..\Go.Juegos\Go.Juegos.csproj" />
   </ItemGroup>
 </Project>

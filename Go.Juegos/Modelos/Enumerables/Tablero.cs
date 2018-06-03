@@ -10,4 +10,12 @@ namespace Go.Juegos.Modelos.Enumerables
         diecisieteXdiecisiete = 17,
         diecinueveXdiecinueve = 19
     }
+
+    public static class TableroValidador
+    {
+        public static bool EsTamañoCorrecto(int tamañoTablero)
+        {
+            return Enum.IsDefined(typeof(Tablero), tamañoTablero);
+        }
+    }
 }

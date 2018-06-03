@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -10,12 +10,18 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
+    <PackageReference Include="Fenix.Base.Tests" Version="2.1.0" />
+    <PackageReference Include="Moq" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Go.Juegos\Go.Juegos.csproj" />
+    <ProjectReference Include="..\Go.Juegos.Data\Go.Juegos.Data.csproj" />
+    <ProjectReference Include="..\Go.Aplicacion\Go.Aplicacion.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modelos\" />
+    <Folder Include="Data\" />
+    <Folder Include="Aplicacion\" />
   </ItemGroup>
 </Project>
