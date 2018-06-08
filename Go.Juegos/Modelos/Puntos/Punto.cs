@@ -63,6 +63,7 @@ namespace Go.Juegos.Modelos.Puntos
             try
             {
                 return CalcularId(Tablero, X - 1, Y);
+
             }
             catch(ArgumentOutOfRangeException)
             {
@@ -74,7 +75,8 @@ namespace Go.Juegos.Modelos.Puntos
         {
             try
             {
-                return CalcularId(Tablero, X, Y + 1);    
+                return CalcularId(Tablero, X, Y + 1);
+
             }
             catch(ArgumentOutOfRangeException)
             {
@@ -87,13 +89,22 @@ namespace Go.Juegos.Modelos.Puntos
             try
             {
                 return CalcularId(Tablero, X, Y - 1);
-            }
+                }
             catch (ArgumentOutOfRangeException)
             {
                 return null;
             }
         }
 
-       
+        public List<string> ObtenerConexiones()
+        {
+            List<string> conexiones = new List<string>
+            {
+                PuntoIzquierdaId, PuntoDerechaId, PuntoArribaId, PuntoAbajoId
+            };
+
+            return conexiones.FindAll(puntoId => puntoId != null);
+        }
+
     }
 }

@@ -16,6 +16,7 @@ namespace Go.Juegos.Modelos
             TurnoActivo = 1;
             Piedras = new List<Piedra>();
             Movimientos = new List<Movimiento>();
+            Grupos = new List<Grupo>();
 
         }
 
@@ -30,28 +31,22 @@ namespace Go.Juegos.Modelos
 
         public ICollection<Piedra> Piedras { get; private set; }
         public ICollection<Movimiento> Movimientos { get; private set; }
+        public ICollection<Grupo> Grupos { get; private set; }
 
-        public void PonerPiedra(string puntoId)
+        public void AdicionarPiedra(Piedra piedra)
         {
-            PiedraValidador.LanzaExcepcionSiPuntoEstaOcupado(puntoId, ObtenerPuntosOcupados());
-
-            Piedras.Add(new Piedra(Guid, ColorActivo, puntoId));
-            Movimientos.Add(new Movimiento(Guid, ColorActivo, puntoId, TurnoActivo));
-
-            CambioDeTurno();
-
+            Piedras.Add(piedra);
         }
 
-        private void CambioDeTurno()
+        public void AdicionarMovimiento(Movimiento movimiento)
+        {
+            Movimientos.Add(movimiento);
+        }
+
+        public void CambioDeTurno()
         {
             TurnoActivo++;
             ColorActivo = CambiarColor();
-        }
-
-        public List<string> ObtenerPuntosOcupados()
-        {
-            
-            return Piedras.Select(piedra => piedra.PuntoId).ToList();
         }
 
         private Color CambiarColor()
@@ -60,6 +55,29 @@ namespace Go.Juegos.Modelos
                 return Color.Blanco;
             else
                 return Color.Negro;
+        }
+
+        public List<string> ObtenerPuntosOcupados()
+        {
+            
+            return Piedras.Select(piedra => piedra.PuntoId).ToList();
+        }
+
+        public List<Piedra> ObtenerPiedrasPorColor(Color color)
+        {
+            return Piedras.Where(piedra => piedra.Color == color)
+                   .ToList();
+        }
+
+        public List<Grupo> ObtenerGruposPorColor(Color color)
+        {
+            return Grupos.Where(grupo => grupo.Color == color)
+                         .ToList();
+        }
+
+        public void ActualizarGrupos(List<Grupo> nuevosGrupos)
+        {
+            Grupos = nuevosGrupos;
         }
     }
 }

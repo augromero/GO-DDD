@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Fenix.Excepciones;
 using Go.Interfaces.Aplicacion;
-using Go.Interfaces.Repositorios;
+using Go.Interfaces.Data;
 using Go.Juegos.Modelos;
 using Go.Juegos.Modelos.Enumerables;
 using Go.Juegos.Modelos.Puntos;

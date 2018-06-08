@@ -1,7 +1,7 @@
 ﻿using System;
 using Go.Juegos.Modelos;
 
-namespace Go.Interfaces.Repositorios
+namespace Go.Interfaces.Data
 {
     public interface IJuegoRepo
     {

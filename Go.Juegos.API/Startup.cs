@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Go.Aplicacion;
 using Go.Interfaces.Aplicacion;
-using Go.Interfaces.Repositorios;
+using Go.Interfaces.Data;
+using Go.Interfaces.Dominio;
 using Go.Juegos.Data;
+using Go.Juegos.Servicios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +45,8 @@ namespace Go.Juegos.API
 
             services.AddScoped<IJuegoRepo, JuegoRepo>();
             services.AddScoped<IPuntoRepo, PuntoRepo>();
+
+            services.AddScoped<IJugada, Jugada>();
 
             services.AddScoped<IJuegoIniciador, JuegoIniciador>();
             services.AddScoped<IPartida, Partida>();

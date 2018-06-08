@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Fenix.Excepciones;
 
-namespace Go.Juegos.Modelos
+namespace Go.Juegos.Servicios
 {
     public static class PiedraValidador
     {

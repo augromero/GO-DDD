@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Go.Interfaces.Repositorios;
+using Go.Interfaces.Data;
 using Go.Juegos.Modelos.Enumerables;
 using Go.Juegos.Modelos.Puntos;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +40,12 @@ namespace Go.Juegos.Data
         {
             return _contexto.Puntos
                             .Any(punto => punto.Tablero == tablero);
+        }
+
+        public Punto ObtenerPuntoPorId(string id)
+        {
+            Punto punto = _contexto.Puntos.Find(id);
+            return punto;
         }
     }
 }

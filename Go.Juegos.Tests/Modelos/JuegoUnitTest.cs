@@ -4,6 +4,7 @@ using System.Linq;
 using Fenix.Excepciones;
 using Go.Juegos.Modelos;
 using Go.Juegos.Modelos.Enumerables;
+using Go.Juegos.Servicios;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Go.Juegos.Tests.Modelos
@@ -29,7 +30,8 @@ namespace Go.Juegos.Tests.Modelos
         public void ObtenerPuntosOcupados_RetornaListaPuntosId()
         {
             Juego juego = new Juego(Tablero.nueveXnueve);
-            juego.PonerPiedra("9X2Y2");
+            Jugada jugada = new Jugada(juego);
+            jugada.PonerPiedra("9X2Y2");
             List<string> puntosOcupados = juego.ObtenerPuntosOcupados();
 
             Assert.IsTrue((new List<string> { "9X2Y2" }).SequenceEqual(puntosOcupados));
@@ -46,28 +48,37 @@ namespace Go.Juegos.Tests.Modelos
         }
 
         [TestMethod]
-        public void PonerPiedra_cuandoMovimientoEsValido_AdicionNuevaPiedraRegistraMovimientoYCambiaTurno()
+        public void ObtenerPiedrasPorColor_RetornaListaDePiedras()
         {
             Juego juego = new Juego(Tablero.nueveXnueve);
-            string puntoId = "9X2Y2";
+            Jugada jugada = new Jugada(juego);
 
-            juego.PonerPiedra(puntoId);
+            jugada.PonerPiedra("9X2Y2");
+            jugada.CambiarTurno();
+            jugada.PonerPiedra("9X7Y7");
+            jugada.CambiarTurno();
+            jugada.PonerPiedra("9X3Y3");
+            jugada.CambiarTurno();
+            
+            List<Piedra> piedrasPorColor = juego.ObtenerPiedrasPorColor(Color.Negro);
 
-            Assert.AreEqual(1, juego.Piedras.Count());
-            Assert.AreEqual(1, juego.Movimientos.Count());
-            Assert.AreEqual(Color.Blanco, juego.ColorActivo);
-            Assert.AreEqual(2, juego.TurnoActivo);
+            Assert.AreEqual(2, piedrasPorColor.Count);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FenixExceptionConflict), "El punto está ocupado por otra piedra.")]
-        public void PonerPiedra_CuandoPuntoEstaOcupado_RetornaError()
+        public void ActualizarGrupos_EliminaYGuardaNuevasAgrupaciones()
         {
             Juego juego = new Juego(Tablero.nueveXnueve);
-            string puntoId = "9X2Y2";
 
-            juego.PonerPiedra(puntoId);
-            juego.PonerPiedra(puntoId);
+            List<Grupo> nuevosGrupos = new List<Grupo>
+            {
+                new Grupo(juego.Guid, Color.Negro, new List<string> {"9X1Y1"}, new List<string> {"9X2Y1", "9X1Y2"} ),
+                new Grupo(juego.Guid, Color.Blanco, new List<string> {"9X9Y9"}, new List<string> {"9X9Y8", "9X8Y9"} )
+            };
+
+            juego.ActualizarGrupos(nuevosGrupos);
+
+            Assert.AreEqual(2, juego.Grupos.Count);
         }
     }
 

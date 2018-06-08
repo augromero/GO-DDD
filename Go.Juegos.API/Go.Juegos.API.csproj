@@ -15,8 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Go.Juegos.Data\Go.Juegos.Data.csproj" />
-    <ProjectReference Include="..\Go.Interfaces.Aplicacion\Go.Interfaces.Aplicacion.csproj" />
     <ProjectReference Include="..\Go.Aplicacion\Go.Aplicacion.csproj" />
+    <ProjectReference Include="..\Go.Interfaces.Data\Go.Interfaces.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Aplicacion.Interfaces\IJuegoIniciador.cs" />

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Fenix.Excepciones;
 using Go.Interfaces.Aplicacion;
-using Go.Interfaces.Repositorios;
+using Go.Interfaces.Data;
+using Go.Interfaces.Dominio;
 using Go.Juegos.Modelos;
+using Go.Juegos.Servicios;
 
 namespace Go.Aplicacion
 {
@@ -10,6 +13,7 @@ namespace Go.Aplicacion
     {
         private readonly IJuegoRepo _juegoRepo;
         private readonly IPuntoRepo _puntoRepo;
+
 
         public Partida(IJuegoRepo juegoRepo, IPuntoRepo puntoRepo)
         {
@@ -24,9 +28,17 @@ namespace Go.Aplicacion
 
             if (_puntoRepo.ExistePuntoEnTablero(puntoId, juego.Tablero) is false)
                 throw new FenixExceptionInvalidParameter("El punto no se encuentra en el tablero.");
+            Jugada jugada = new Jugada(juego);
 
-            juego.PonerPiedra(puntoId);
+            jugada.PonerPiedra(puntoId);
 
+
+            GrupoCreador grupoCreador = new GrupoCreador(juego);
+            List<Grupo> gruposNuevos = grupoCreador.AgruparPiedras(_puntoRepo.ObtenerPuntoPorId(puntoId));
+            juego.ActualizarGrupos(gruposNuevos);
+
+            jugada.CambiarTurno();
+           
             _juegoRepo.GuardarCambios();
 
             return juego;

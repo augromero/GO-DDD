@@ -9,13 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos.Data", "Go.Juegos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos.API", "Go.Juegos.API\Go.Juegos.API.csproj", "{5D0B1EC5-362E-4CD9-ABC5-046584432DB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Interfaces", "Go.Interfaces\Go.Interfaces.csproj", "{2D72F5FB-7402-4518-979E-55A65759E991}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Aplicacion", "Go.Aplicacion\Go.Aplicacion.csproj", "{597CFFFC-5CD9-4D4B-AD7F-2333E9AD2051}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Juegos.IntegrationTests", "Go.Juegos.IntegrationTests\Go.Juegos.IntegrationTests.csproj", "{20ACD78C-9543-4DCA-979C-F740279C5C56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Interfaces.Aplicacion", "Go.Interfaces.Aplicacion\Go.Interfaces.Aplicacion.csproj", "{AFD3CAE1-E45F-4534-9A6C-0F8407663B1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Interfaces.Dominio", "Go.Interfaces.Dominio\Go.Interfaces.Dominio.csproj", "{BE2522A5-5137-4BCE-A34B-23168F379785}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go.Interfaces.Data", "Go.Interfaces.Data\Go.Interfaces.Data.csproj", "{E11538BC-27C4-40A1-9F70-E801F9C10070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +41,6 @@ Global
 		{5D0B1EC5-362E-4CD9-ABC5-046584432DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0B1EC5-362E-4CD9-ABC5-046584432DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0B1EC5-362E-4CD9-ABC5-046584432DB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D72F5FB-7402-4518-979E-55A65759E991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D72F5FB-7402-4518-979E-55A65759E991}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D72F5FB-7402-4518-979E-55A65759E991}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D72F5FB-7402-4518-979E-55A65759E991}.Release|Any CPU.Build.0 = Release|Any CPU
 		{597CFFFC-5CD9-4D4B-AD7F-2333E9AD2051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{597CFFFC-5CD9-4D4B-AD7F-2333E9AD2051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{597CFFFC-5CD9-4D4B-AD7F-2333E9AD2051}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,6 +53,14 @@ Global
 		{AFD3CAE1-E45F-4534-9A6C-0F8407663B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD3CAE1-E45F-4534-9A6C-0F8407663B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD3CAE1-E45F-4534-9A6C-0F8407663B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE2522A5-5137-4BCE-A34B-23168F379785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE2522A5-5137-4BCE-A34B-23168F379785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE2522A5-5137-4BCE-A34B-23168F379785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE2522A5-5137-4BCE-A34B-23168F379785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E11538BC-27C4-40A1-9F70-E801F9C10070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E11538BC-27C4-40A1-9F70-E801F9C10070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E11538BC-27C4-40A1-9F70-E801F9C10070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E11538BC-27C4-40A1-9F70-E801F9C10070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

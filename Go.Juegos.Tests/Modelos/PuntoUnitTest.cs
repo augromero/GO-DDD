@@ -91,5 +91,31 @@ namespace Go.Juegos.Tests.Modelos
             Assert.AreEqual(9, puntosTablero9x9.Max(punto => punto.Y));
         }
 
+        [TestMethod]
+        public void ObtenerConexiones_RetornaListaDePuntosAdyacentes()
+        {
+            List<string> esperadas = new List<string> { "9X1Y2", "9X2Y1", "9X3Y2", "9X2Y3" }
+                .OrderBy(elem => elem)
+                .ToList();
+            Punto punto = new Punto(Tablero.nueveXnueve, 2, 2);
+
+            List<string> conexiones = punto.ObtenerConexiones()
+                                           .OrderBy(elem => elem)
+                                           .ToList();
+
+            Assert.AreEqual(4, conexiones.Count);
+            Assert.IsTrue(esperadas.SequenceEqual(conexiones));
+        }
+
+        [TestMethod]
+        public void ObtenerConexiones_NoContieneElementosNulos()
+        {
+            Punto punto = new Punto(Tablero.nueveXnueve, 1, 1);
+
+            List<string> conexiones = punto.ObtenerConexiones();
+
+            Assert.IsTrue(conexiones.TrueForAll(elem => string.IsNullOrEmpty(elem) is false));
+            Assert.AreEqual(2, punto.ObtenerConexiones().Count);
+        }
     }
 }

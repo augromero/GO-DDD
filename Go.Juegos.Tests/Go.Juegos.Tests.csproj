@@ -18,10 +18,14 @@
     <ProjectReference Include="..\Go.Juegos\Go.Juegos.csproj" />
     <ProjectReference Include="..\Go.Juegos.Data\Go.Juegos.Data.csproj" />
     <ProjectReference Include="..\Go.Aplicacion\Go.Aplicacion.csproj" />
+    <ProjectReference Include="..\Go.Interfaces.Data\Go.Interfaces.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modelos\" />
     <Folder Include="Data\" />
     <Folder Include="Aplicacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Modelos\GrupoCreadorUnitTestcs" />
   </ItemGroup>
 </Project>

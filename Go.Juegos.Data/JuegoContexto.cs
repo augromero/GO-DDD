@@ -16,6 +16,7 @@ namespace Go.Juegos.Data
         public DbSet<Juego> Juegos { get; set; }
         public DbSet<Piedra> Piedras { get; set; }
         public DbSet<Movimiento> Movimientos { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
         public DbSet<Punto> Puntos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,15 +27,24 @@ namespace Go.Juegos.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Juego>()
+                        .ToTable("Juegos")
                         .HasKey(propiedad => propiedad.Guid);
+            
             modelBuilder.Entity<Juego>().Property(propiedad => propiedad.ColorActivo)
                         .HasConversion(
                             color => color.ToString(),
                             color => (Color)Enum.Parse(typeof(Color), color));
 
             modelBuilder.Entity<Juego>()
-                        .ToTable("Juegos")
                         .HasMany(rel => rel.Piedras)
+                        .WithOne();
+
+            modelBuilder.Entity<Juego>()
+                        .HasMany(rel => rel.Movimientos)
+                        .WithOne();
+
+            modelBuilder.Entity<Juego>()
+                        .HasMany(rel => rel.Grupos)
                         .WithOne();
 
             modelBuilder.Entity<Piedra>()
@@ -57,9 +67,24 @@ namespace Go.Juegos.Data
                             color => color.ToString(),
                             color => (Color)Enum.Parse(typeof(Color), color));
 
-            modelBuilder.Entity<Punto>()
-                        .HasKey(propiedad => propiedad.Id);
+            modelBuilder.Entity<Grupo>()
+                        .ToTable("Grupos")
+                        .HasKey(propiedad => propiedad.Guid);
 
+            modelBuilder.Entity<Grupo>()
+                        .Property(propiedad => propiedad.Color)
+                        .HasConversion(
+                            color => color.ToString(),
+                            color => (Color)Enum.Parse(typeof(Color), color));
+            
+            modelBuilder.Entity<Grupo>()
+                        .Ignore(propiedad => propiedad.PuntosLibertades);
+            modelBuilder.Entity<Grupo>()
+                        .Ignore(propiedad => propiedad.PuntosPiedras);
+
+            modelBuilder.Entity<Punto>()
+                        .ToTable("Puntos")
+                        .HasKey(propiedad => propiedad.Id);
         }
     }
 }

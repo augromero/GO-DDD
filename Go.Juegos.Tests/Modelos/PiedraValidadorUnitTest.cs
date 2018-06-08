@@ -4,6 +4,7 @@ using Fenix.Excepciones;
 using Go.Juegos.Modelos;
 using Go.Juegos.Modelos.Enumerables;
 using Go.Juegos.Modelos.Puntos;
+using Go.Juegos.Servicios;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Go.Juegos.Tests.Modelos

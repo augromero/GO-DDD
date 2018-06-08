@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Go.Juegos.Modelos.Enumerables;
 using Go.Juegos.Modelos.Puntos;
 
-namespace Go.Interfaces.Repositorios
+namespace Go.Interfaces.Data
 {
     public interface IPuntoRepo
     {
@@ -11,5 +11,6 @@ namespace Go.Interfaces.Repositorios
         List<Punto> ObtenerPuntosTablero(Tablero tablero);
         bool ExistePuntoEnTablero(string puntoId, Tablero tablero);
         bool ExisteTableroCreado(Tablero tamañoTablero);
+        Punto ObtenerPuntoPorId(string id);
     }
 }
