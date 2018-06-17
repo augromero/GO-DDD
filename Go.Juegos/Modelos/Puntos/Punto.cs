@@ -17,10 +17,10 @@ namespace Go.Juegos.Modelos.Puntos
             X = x;
             Y = y;
 
-            PuntoDerechaId = CalcularPuntoDerecha();
-            PuntoIzquierdaId = CalcularPuntoIzquierda();
-            PuntoArribaId = CalcularPuntoArriba();
-            PuntoAbajoId = CalcularPuntoAbajo();
+            PuntoDerechaId = CalcularNuevoPunto(1, 0);
+            PuntoIzquierdaId = CalcularNuevoPunto(-1, 0);
+            PuntoArribaId = CalcularNuevoPunto(0, 1);
+            PuntoAbajoId = CalcularNuevoPunto(0, -1);
 
 
         }
@@ -34,68 +34,26 @@ namespace Go.Juegos.Modelos.Puntos
         public string PuntoArribaId { get; private set; }
         public string PuntoAbajoId { get; private set; }
 
-        private string CalcularId(Tablero tablero, int x, int y)
+        private string CalcularId(Tablero tablero, short x, short y)
         {
-            if (x > (short)tablero || x <= 0)
+            if (EsCoordenadaValida(tablero, x, y) is false)
                 throw new ArgumentOutOfRangeException("Coordenada está fuera del tablero.");
 
-            if (y > (short)tablero || y <= 0)
-                throw new ArgumentOutOfRangeException("Coordenada está fuera del tablero.");
-
-            return $"{(short)tablero}X{x}Y{y}";
+          return $"{(short)tablero}X{x}Y{y}";
         }
 
-        private string CalcularPuntoDerecha()
+        private string CalcularNuevoPunto (short movimientoEnX, short movimientoEnY)
         {
-            try
-            {
-                return CalcularId(Tablero, X + 1, Y);
-            }
-            catch(ArgumentOutOfRangeException)
-            {
-                return null;
-            }
+            short nuevoX = (short)(X + movimientoEnX);
+            short nuevoY = (short)(Y + movimientoEnY);
 
+            if (EsCoordenadaValida(Tablero, nuevoX, nuevoY))
+                return CalcularId(Tablero, nuevoX, nuevoY);
+
+            return null;
         }
 
-        private string CalcularPuntoIzquierda()
-        {
-            try
-            {
-                return CalcularId(Tablero, X - 1, Y);
-
-            }
-            catch(ArgumentOutOfRangeException)
-            {
-                return null;
-            }
-        }
-
-        private string CalcularPuntoArriba()
-        {
-            try
-            {
-                return CalcularId(Tablero, X, Y + 1);
-
-            }
-            catch(ArgumentOutOfRangeException)
-            {
-                return null;
-            }
-        }
-
-        private string CalcularPuntoAbajo()
-        {
-            try
-            {
-                return CalcularId(Tablero, X, Y - 1);
-                }
-            catch (ArgumentOutOfRangeException)
-            {
-                return null;
-            }
-        }
-
+       
         public List<string> ObtenerConexiones()
         {
             List<string> conexiones = new List<string>
@@ -106,5 +64,17 @@ namespace Go.Juegos.Modelos.Puntos
             return conexiones.FindAll(puntoId => puntoId != null);
         }
 
+        private bool EsCoordenadaValida(Tablero tablero, short x, short y)
+        {
+            if (x > (short)tablero || x <= 0)
+                return false;
+
+            if (y > (short)tablero || y <= 0)
+                return false;
+
+            return true;
+        }
+
+       
     }
 }
