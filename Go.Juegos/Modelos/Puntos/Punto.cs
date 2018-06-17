@@ -10,7 +10,7 @@ namespace Go.Juegos.Modelos.Puntos
         {
         }
 
-        public Punto (Tablero tablero, int x, int y)
+        public Punto (Tablero tablero, short x, short y)
         {
             Id = CalcularId(tablero, x, y);
             Tablero = tablero;
@@ -27,8 +27,8 @@ namespace Go.Juegos.Modelos.Puntos
 
         public string Id { get; private set; }
         public Tablero Tablero { get; private set; }
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public short X { get; private set; }
+        public short Y { get; private set; }
         public string PuntoDerechaId { get; private set; }
         public string PuntoIzquierdaId { get; private set; }
         public string PuntoArribaId { get; private set; }

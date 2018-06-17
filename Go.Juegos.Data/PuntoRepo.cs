@@ -47,5 +47,13 @@ namespace Go.Juegos.Data
             Punto punto = _contexto.Puntos.Find(id);
             return punto;
         }
+
+        public List<Punto> ObtenerPuntosPorIds(List<string> idsPuntos)
+        {
+            List<Punto> puntos = _contexto.Puntos
+                                          .Where(punto => idsPuntos.Contains(punto.Id))
+                                          .ToList();
+            return puntos;
+        }
     }
 }

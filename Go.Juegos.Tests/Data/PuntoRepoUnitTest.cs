@@ -80,5 +80,17 @@ namespace Go.Juegos.Tests.Data
             Assert.IsFalse(_puntoRepo.ExisteTableroCreado(Tablero.nueveXnueve));
         }
 
+        [TestMethod]
+        public void ObtenerPuntosPorIds_RetornaPuntosDeUnaListaDeIds()
+        {
+            CrearPuntosTablero(Tablero.nueveXnueve);
+
+            List<string> idsPuntos = new List<string> { "9X1Y2", "9X3Y4" };
+
+            List<Punto> puntos = _puntoRepo.ObtenerPuntosPorIds(idsPuntos);
+
+            Assert.AreEqual(2, puntos.Count);
+        }
+
     }
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Modelos\Puntos\PuntoInexistenteException.cs" />
+    <Compile Remove="Modelos\GrupoCalculadora.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Fenix.Excepciones" Version="2.1.0" />

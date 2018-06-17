@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Base.Tests;
 using Go.Juegos.Data;
@@ -45,6 +46,17 @@ namespace Go.Juegos.Tests.Data
 
             Assert.IsInstanceOfType(juegoRetornado.Guid, typeof(Guid));
 
+        }
+
+        [TestMethod]
+        public void ObtenerPiedrasJuego_RetornaListaPiedrasPorGuiJuego()
+        {
+            Juego nuevoJuego = new Juego(Tablero.nueveXnueve);
+            Guid juegoGuid = _juegoRepo.Guardar(nuevoJuego);
+
+            List<Piedra> piedras = _juegoRepo.ObtenerPiedrasJuego(juegoGuid);
+
+            Assert.AreEqual(0, piedras.Count);
         }
     }
 }

@@ -12,4 +12,7 @@
     <ProjectReference Include="..\Go.Juegos\Go.Juegos.csproj" />
     <ProjectReference Include="..\Go.Interfaces.Data\Go.Interfaces.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="JuegoContextoLectura.cs" />
+  </ItemGroup>
 </Project>

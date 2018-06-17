@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Go.Interfaces.Data;
 using Go.Juegos.Modelos;
@@ -35,6 +36,19 @@ namespace Go.Juegos.Data
         public void GuardarCambios()
         {
             _contexto.SaveChanges();
+        }
+
+        public List<Piedra> ObtenerPiedrasJuego(Guid juegoGuid)
+        {
+            IQueryable<Juego> encontrarJuego = _contexto.Juegos
+                            .Include(juego => juego.Piedras)
+                                                        .Where(juego => juego.Guid == juegoGuid);
+
+            List<Piedra> piedras = encontrarJuego
+                .Select(juego => juego.Piedras.ToList())
+                .FirstOrDefault();
+
+            return piedras;
         }
     }
 }

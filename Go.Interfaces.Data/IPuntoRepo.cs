@@ -12,5 +12,6 @@ namespace Go.Interfaces.Data
         bool ExistePuntoEnTablero(string puntoId, Tablero tablero);
         bool ExisteTableroCreado(Tablero tamañoTablero);
         Punto ObtenerPuntoPorId(string id);
+        List<Punto> ObtenerPuntosPorIds(List<string> idsPuntos);
     }
 }

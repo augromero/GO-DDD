@@ -10,9 +10,9 @@ namespace Go.Juegos.Modelos.Puntos
         public static List<Punto> CrearPuntosTablero(Tablero tablero)
         {
             List<Punto> puntosTablero = new List<Punto>();
-            for (int x = 1; x <= (int)tablero; x++)
+            for (short x = 1; x <= (short)tablero; x++)
             {
-                for (int y = 1; y <= (int)tablero; y++)
+                for (short y = 1; y <= (short)tablero; y++)
                 {
                     puntosTablero.Add(new Punto(tablero, x, y));
                 }
